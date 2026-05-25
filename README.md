@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# panM: Next-Generation Pangenome Analysis
 
-## Getting Started
+<div align="center">
+  <img src="https://img.shields.io/badge/Status-Active-success" alt="Status">
+  <img src="https://img.shields.io/badge/License-Proprietary-blue" alt="License">
+  <img src="https://img.shields.io/badge/Framework-Next.js%2014-black" alt="Next.js">
+</div>
 
-First, run the development server:
+<br />
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**panM** is a premium, cloud-based platform designed for rapid bacterial pangenome exploration and visualization. It accelerates the discovery of core and accessory genomes, orthologous gene clusters, and phylogenetic relationships across large microbial cohorts.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- 🧬 **Rapid Gene Clustering:** Leverage high-speed homology searches (DIAMOND) and robust clustering (MCL) to process dozens of bacterial strains in minutes.
+- 🌳 **Interactive Phylogenetic Trees:** Explore evolutionary relationships using dynamic, fully interactive D3.js phylogenetic trees.
+- 📊 **Rich Metadata Integration:** Seamlessly map clinical, temporal, and geographical metadata directly onto ancestral nodes for outbreak tracking.
+- 🔍 **Sequence Alignment Visualization:** Dive deep into specific core genes with embedded Multiple Sequence Alignment (MSA) viewers.
+- 🚀 **Cloud-Native Architecture:** Built on Next.js with a modern, glassmorphism UI for a seamless user experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Quick Start
 
-## Learn More
+### Cloud Platform
+Visit our live SaaS platform at **[panmxgenome.vercel.app](https://panmxgenome.vercel.app)** to access the demo dataset and upload your own `.gbk` (GenBank) or FASTA files.
 
-To learn more about Next.js, take a look at the following resources:
+### Local Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/weedras/panM.git
+   cd panM
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000) to view the application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Input Data Requirements
+panM accepts standard GenBank (`.gbk`) files containing both nucleotide sequences and functional annotations (CDS features). Ensure unique strain identifiers are used for file names (e.g., `Strain_A.gbk`).
+
+## Copyright
+© 2026 weedras. All Rights Reserved.
+This project and its source code are proprietary and closed-source. Unauthorized copying, modification, distribution, or use is strictly prohibited.
