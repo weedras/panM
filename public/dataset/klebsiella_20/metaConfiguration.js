@@ -1,0 +1,3 @@
+var meta_details={"collection_date": ["2007", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "unknown"], "country": ["unknown"], "host": ["Homo sapiens", "Homo sapines", "unknown"]},
+meta_display={"color_options": {"collection_date": {"menuItem": "collection_date", "type": "continuous"}, "country": {"menuItem": "country", "type": "discrete"}, "host": {"menuItem": "host", "type": "discrete"}}, "meta_display_order": ["collection_date", "country", "host"]};
+var association_columns=[];

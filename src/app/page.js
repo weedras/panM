@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main style={{ minHeight: "100vh", position: "relative", overflow: "hidden" }}>
@@ -8,9 +10,9 @@ export default function Home() {
           pan<span className="gradient-text">M</span>
         </div>
         <div style={{ display: "flex", gap: "24px", alignItems: "center", fontSize: "14px", color: "var(--muted)" }}>
-          <a href="#" className="nav-link">Features</a>
-          <a href="#" className="nav-link">Documentation</a>
-          <a href="#" className="btn btn-secondary" style={{ padding: "8px 16px", fontSize: "14px" }}>Sign In</a>
+          <Link href="#" className="nav-link">Features</Link>
+          <Link href="#" className="nav-link">Documentation</Link>
+          <Link href="/auth" className="btn btn-secondary" style={{ padding: "8px 16px", fontSize: "14px" }}>Sign In</Link>
         </div>
       </nav>
 
@@ -30,13 +32,13 @@ export default function Home() {
         </p>
 
         <div style={{ display: "flex", gap: "16px" }}>
-          <a href="#" className="btn btn-primary" style={{ padding: "16px 32px", fontSize: "16px" }}>
+          <Link href="/upload" className="btn btn-primary" style={{ padding: "16px 32px", fontSize: "16px" }}>
             Start Analysis
             <svg style={{ marginLeft: "8px" }} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#" className="btn btn-secondary" style={{ padding: "16px 32px", fontSize: "16px" }}>
+          </Link>
+          <Link href="/klebsiella_20.html" className="btn btn-secondary" style={{ padding: "16px 32px", fontSize: "16px" }}>
             View Demo Dataset
-          </a>
+          </Link>
         </div>
 
         <div className="glass-panel" style={{ marginTop: "80px", width: "100%", padding: "40px", display: "flex", justifyContent: "space-around", textAlign: "center" }}>
