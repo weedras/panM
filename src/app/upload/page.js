@@ -64,7 +64,7 @@ export default function Upload() {
         
         <h1 style={{ fontSize: "48px", marginBottom: "16px", letterSpacing: "-1px" }}>Upload Strains</h1>
         <p style={{ color: "var(--muted)", marginBottom: "48px" }}>
-          Drop your GenBank (.gbk) or FASTA files below. They will be securely uploaded to our cloud storage and queued for the panX pipeline.
+          Drop your GenBank (.gbk) or FASTA files below. They will be securely uploaded to our cloud storage and queued for the panM pipeline.
         </p>
 
         <input 
