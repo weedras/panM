@@ -1,66 +1,60 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main style={{ minHeight: "100vh", position: "relative", overflow: "hidden" }}>
+      <div className="hero-gradient"></div>
+
+      <nav style={{ padding: "24px 48px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ fontWeight: 700, fontSize: "24px", letterSpacing: "-0.5px" }}>
+          pan<span className="gradient-text">M</span>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+        <div style={{ display: "flex", gap: "24px", alignItems: "center", fontSize: "14px", color: "var(--muted)" }}>
+          <a href="#" style={{ transition: "color 0.2s" }} onMouseOver={e => e.target.style.color = "white"} onMouseOut={e => e.target.style.color = "var(--muted)"}>Features</a>
+          <a href="#" style={{ transition: "color 0.2s" }} onMouseOver={e => e.target.style.color = "white"} onMouseOut={e => e.target.style.color = "var(--muted)"}>Documentation</a>
+          <a href="#" className="btn btn-secondary" style={{ padding: "8px 16px", fontSize: "14px" }}>Sign In</a>
+        </div>
+      </nav>
+
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "120px 24px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+        
+        <div style={{ padding: "6px 16px", borderRadius: "99px", border: "1px solid rgba(59,130,246,0.3)", backgroundColor: "rgba(59,130,246,0.1)", color: "#93c5fd", fontSize: "14px", fontWeight: 500, marginBottom: "32px", display: "inline-block" }}>
+          🚀 Version 1.0 is now live
+        </div>
+
+        <h1 style={{ fontSize: "72px", lineHeight: 1.1, letterSpacing: "-2px", marginBottom: "24px", maxWidth: "900px" }}>
+          Next-Generation <br />
+          <span className="gradient-text">Pangenome Analysis</span>
+        </h1>
+        
+        <p style={{ fontSize: "20px", color: "var(--muted)", maxWidth: "600px", marginBottom: "48px", lineHeight: 1.6 }}>
+          Upload your GenBank files or select public strains to automatically cluster genes, compute sequence alignments, and generate interactive phylogenetic trees in the cloud.
+        </p>
+
+        <div style={{ display: "flex", gap: "16px" }}>
+          <a href="#" className="btn btn-primary" style={{ padding: "16px 32px", fontSize: "16px" }}>
+            Start Analysis
+            <svg style={{ marginLeft: "8px" }} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+          <a href="#" className="btn btn-secondary" style={{ padding: "16px 32px", fontSize: "16px" }}>
+            View Demo Dataset
           </a>
         </div>
-      </main>
-    </div>
+
+        <div className="glass-panel" style={{ marginTop: "80px", width: "100%", padding: "40px", display: "flex", justifyContent: "space-around", textAlign: "center" }}>
+          <div>
+            <h3 style={{ fontSize: "36px", marginBottom: "8px", fontFamily: "var(--font-inter)", letterSpacing: "-1px" }}>36k+</h3>
+            <p style={{ color: "var(--muted)", fontSize: "14px" }}>Gene Clusters Computed</p>
+          </div>
+          <div>
+            <h3 style={{ fontSize: "36px", marginBottom: "8px", fontFamily: "var(--font-inter)", letterSpacing: "-1px" }}>100x</h3>
+            <p style={{ color: "var(--muted)", fontSize: "14px" }}>Faster than Local</p>
+          </div>
+          <div>
+            <h3 style={{ fontSize: "36px", marginBottom: "8px", fontFamily: "var(--font-inter)", letterSpacing: "-1px" }}>21+</h3>
+            <p style={{ color: "var(--muted)", fontSize: "14px" }}>Strains Supported</p>
+          </div>
+        </div>
+
+      </div>
+    </main>
   );
 }
