@@ -11,7 +11,7 @@ const sqs = new SQSClient({
 
 export async function POST(req) {
   try {
-    const { jobId, files } = await req.json();
+    const { jobId, email, files } = await req.json();
     if (!jobId || !files || !files.length) {
       return NextResponse.json({ error: "Missing jobId or files" }, { status: 400 });
     }
@@ -25,6 +25,7 @@ export async function POST(req) {
     // Send the message to SQS
     const messageBody = JSON.stringify({
       jobId,
+      email,
       files,
       timestamp: new Date().toISOString(),
     });

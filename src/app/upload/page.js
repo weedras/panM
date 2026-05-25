@@ -7,6 +7,7 @@ export default function Upload() {
   const [files, setFiles] = useState([]);
   const [isUploading, setIsUploading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [email, setEmail] = useState("");
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef(null);
 
@@ -43,6 +44,10 @@ export default function Upload() {
   const handleSimulatedUpload = async (e) => {
     e.stopPropagation(); // Prevent opening file picker again when clicking upload button
     if (files.length === 0) return;
+    if (!email || !email.includes('@')) {
+      alert("Please enter a valid email address so we can send you the results.");
+      return;
+    }
     setIsUploading(true);
     setProgress(10);
     
@@ -75,7 +80,7 @@ export default function Upload() {
       const qRes = await fetch('/api/queue', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ jobId: data.jobId, files: data.urls.map(u => u.s3Key) })
+        body: JSON.stringify({ jobId: data.jobId, email: email, files: data.urls.map(u => u.s3Key) })
       });
       
       if (!qRes.ok) throw new Error("Failed to queue job");
@@ -134,6 +139,16 @@ export default function Upload() {
                     {f.name}
                   </span>
                 ))}
+              </div>
+              <div style={{ marginBottom: "24px" }} onClick={(e) => e.stopPropagation()}>
+                <input 
+                  type="email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your Email Address (for results)"
+                  disabled={isUploading}
+                  style={{ width: "100%", maxWidth: "400px", padding: "12px", borderRadius: "8px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "#fff", outline: "none", textAlign: "center" }}
+                />
               </div>
               
               {!isUploading ? (
