@@ -107,6 +107,18 @@ export default function Upload() {
           Drop your GenBank (.gbk) or FASTA files below. They will be securely uploaded to our cloud storage and queued for the panM pipeline.
         </p>
 
+        <div style={{ marginBottom: "24px" }}>
+          <label style={{ display: "block", marginBottom: "8px", fontWeight: "bold" }}>Your Email Address (for results)</label>
+          <input 
+            type="email" 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="researcher@university.edu"
+            disabled={isUploading}
+            style={{ width: "100%", padding: "16px", borderRadius: "8px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "#fff", outline: "none", fontSize: "16px" }}
+          />
+        </div>
+
         <input 
           type="file" 
           multiple 
@@ -139,16 +151,6 @@ export default function Upload() {
                     {f.name}
                   </span>
                 ))}
-              </div>
-              <div style={{ marginBottom: "24px" }} onClick={(e) => e.stopPropagation()}>
-                <input 
-                  type="email" 
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your Email Address (for results)"
-                  disabled={isUploading}
-                  style={{ width: "100%", maxWidth: "400px", padding: "12px", borderRadius: "8px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "#fff", outline: "none", textAlign: "center" }}
-                />
               </div>
               
               {!isUploading ? (
