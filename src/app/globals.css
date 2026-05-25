@@ -98,3 +98,6 @@ a {
   z-index: -1;
   pointer-events: none;
 }
+
+.nav-link { color: var(--muted); transition: color 0.2s; }
+.nav-link:hover { color: white; }

@@ -8,8 +8,8 @@ export default function Home() {
           pan<span className="gradient-text">M</span>
         </div>
         <div style={{ display: "flex", gap: "24px", alignItems: "center", fontSize: "14px", color: "var(--muted)" }}>
-          <a href="#" style={{ transition: "color 0.2s" }} onMouseOver={e => e.target.style.color = "white"} onMouseOut={e => e.target.style.color = "var(--muted)"}>Features</a>
-          <a href="#" style={{ transition: "color 0.2s" }} onMouseOver={e => e.target.style.color = "white"} onMouseOut={e => e.target.style.color = "var(--muted)"}>Documentation</a>
+          <a href="#" className="nav-link">Features</a>
+          <a href="#" className="nav-link">Documentation</a>
           <a href="#" className="btn btn-secondary" style={{ padding: "8px 16px", fontSize: "14px" }}>Sign In</a>
         </div>
       </nav>
