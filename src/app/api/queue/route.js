@@ -39,6 +39,6 @@ export async function POST(req) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("SQS error:", error);
-    return NextResponse.json({ error: "Failed to queue job" }, { status: 500 });
+    return NextResponse.json({ error: error.message || "Failed to queue job" }, { status: 500 });
   }
 }

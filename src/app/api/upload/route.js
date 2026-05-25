@@ -38,6 +38,6 @@ export async function POST(req) {
     return NextResponse.json({ jobId, urls });
   } catch (error) {
     console.error("Presigned URL error:", error);
-    return NextResponse.json({ error: "Failed to generate URLs" }, { status: 500 });
+    return NextResponse.json({ error: error.message || "Failed to generate URLs" }, { status: 500 });
   }
 }
