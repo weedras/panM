@@ -40,19 +40,54 @@ export default function Upload() {
     }
   };
 
-  const handleSimulatedUpload = (e) => {
+  const handleSimulatedUpload = async (e) => {
     e.stopPropagation(); // Prevent opening file picker again when clicking upload button
     if (files.length === 0) return;
     setIsUploading(true);
-    let currentProgress = 0;
-    const interval = setInterval(() => {
-      currentProgress += 5;
-      setProgress(currentProgress);
-      if (currentProgress >= 100) {
-        clearInterval(interval);
-        setTimeout(() => alert("Strains securely queued for analysis. Awaiting compute worker allocation..."), 500);
-      }
-    }, 200);
+    setProgress(10);
+    
+    try {
+      // 1. Get presigned URLs
+      const filenames = files.map(f => f.name);
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filenames })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to get presigned URLs");
+      setProgress(30);
+
+      // 2. Upload directly to S3
+      await Promise.all(
+        data.urls.map(async (u) => {
+          const file = files.find(f => f.name === u.filename);
+          await fetch(u.url, {
+            method: 'PUT',
+            body: file,
+            headers: { 'Content-Type': 'application/octet-stream' }
+          });
+        })
+      );
+      setProgress(80);
+
+      // 3. Queue the job
+      const qRes = await fetch('/api/queue', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ jobId: data.jobId, files: data.urls.map(u => u.s3Key) })
+      });
+      
+      if (!qRes.ok) throw new Error("Failed to queue job");
+      setProgress(100);
+      
+      setTimeout(() => alert("Strains securely uploaded to AWS and queued! The local worker will process them shortly."), 500);
+    } catch (err) {
+      console.error(err);
+      alert("Error: " + err.message);
+      setIsUploading(false);
+      setProgress(0);
+    }
   };
 
   return (
