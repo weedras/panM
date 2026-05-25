@@ -10,8 +10,8 @@ export default function Home() {
           pan<span className="gradient-text">M</span>
         </div>
         <div style={{ display: "flex", gap: "24px", alignItems: "center", fontSize: "14px", color: "var(--muted)" }}>
-          <Link href="#" className="nav-link">Features</Link>
-          <Link href="#" className="nav-link">Documentation</Link>
+          <Link href="/features" className="nav-link">Features</Link>
+          <Link href="/docs" className="nav-link">Documentation</Link>
           <Link href="/auth" className="btn btn-secondary" style={{ padding: "8px 16px", fontSize: "14px" }}>Sign In</Link>
         </div>
       </nav>
